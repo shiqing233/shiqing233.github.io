@@ -38,6 +38,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
+
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
@@ -49,6 +50,7 @@
 		</hgroup>
 		
 
+
 		<nav class="header-menu">
 			<ul>
 			
@@ -57,36 +59,38 @@
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
-    		
-    			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)" target="_blank" rel="noopener">友链</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
-    			
-            
+			
+				
+				<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_self" >所有文章</a>
+				
+	        
+				
+				<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)" target="_self" >友链</a>
+				
+	        
+				
+				<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_self" >关于我</a>
+				
+	        
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="/shiqing233" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_self" href="/shiqing233" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="/%E6%97%B6%E5%80%BEbai" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_self" href="/%E6%97%B6%E5%80%BEbai" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+					<a class="qq" target="_self" href="/3372718670" title="qq"><i class="icon-qq"></i></a>
 		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="weixin" target="_self" href="/b25y23" title="weixin"><i class="icon-weixin"></i></a>
+		        
+					<a class="mail" target="_self" href="/3372718670@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
 	</header>		
-</div>
 
+</div>
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
@@ -117,9 +121,11 @@
 			        
 						<a class="weibo" target="_blank" href="/%E6%97%B6%E5%80%BEbai" title="weibo"><i class="icon-weibo"></i></a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+						<a class="qq" target="_blank" href="/3372718670" title="qq"><i class="icon-qq"></i></a>
 			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="weixin" target="_blank" href="/b25y23" title="weixin"><i class="icon-weixin"></i></a>
+			        
+						<a class="mail" target="_blank" href="/3372718670@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -165,13 +171,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="今日囧"><a href="#今日囧" class="headerlink" title="今日囧"></a>今日囧</h1><h2 id="学习囧"><a href="#学习囧" class="headerlink" title="学习囧"></a>学习囧</h2><p>最开始要写一个删除子串的算法，原以为这是一个简单的问题，看来还是眼高手低，我可能要多学习基础的东西。一开始我想要用指针的循环来解决这个问题，可是忙活了半天，最后还是失败告终。我就打算干脆用数组吧，顺便复习一下kmp算法，实践操作一下。提到kmp算法，今天真的是历史的一幕，疯狂失败之后我开始一步一步debug，然后发现一个地方-1&gt;3返回了true，然后我正准备去搜索问题于是迎来了第二大囧，好先不说这件事，问题的根本就是strlen()函数返回值是size_t类型，也就是无符号整型，由于优先级的问题又把-1转换成了无符号型，于是导致了上边说的问题，经过改正终于实现了kmp算法。下面是我的代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_next</span><span class="params">(<span class="keyword">char</span> s[],<span class="keyword">int</span> next[])</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">-1</span>;</span><br><span class="line">	next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;<span class="built_in">strlen</span>(s)<span class="number">-1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||s[i]==s[j])&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">			<span class="keyword">if</span>(s[i]!=s[j]) next[i]=j;</span><br><span class="line">			<span class="keyword">else</span> next[i]=next[j];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> j=next[j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> s[<span class="number">256</span>];</span><br><span class="line">	<span class="keyword">char</span> t[<span class="number">256</span>];</span><br><span class="line">	<span class="keyword">int</span> next[<span class="number">256</span>];</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">	get_next(s,next);</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>((i&lt;(<span class="keyword">int</span>)<span class="built_in">strlen</span>(s))&amp;&amp;(j&lt;(<span class="keyword">int</span>)<span class="built_in">strlen</span>(t)))&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||s[i]==t[j])&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> j=next[j];</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">if</span>(j&gt;=<span class="built_in">strlen</span>(t)) <span class="built_in">cout</span>&lt;&lt;i-<span class="built_in">strlen</span>(t)+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="生活囧"><a href="#生活囧" class="headerlink" title="生活囧"></a>生活囧</h2><p>最近诸事不顺，从大创莫名其妙被淘汰，到逃课被抓，再到在机房用校园网导致欠费(严重怀疑我一个人支撑全教室的网络)，再到昨晚给她评论她删了说说，感觉我被制裁了，无论那一方面都是打击我的自信，不过还好，我这次不知为何心态很好，要是前些日子我可能就又开启自闭模式了。少年，少玩些游戏吧，相信自己，好好努力，你还是可以的。(又一波鸡汤)   Time.</p>
-
+        <h1 id="今日囧"><a href="#今日囧" class="headerlink" title="今日囧"></a>今日囧</h1><h2 id="学习囧"><a href="#学习囧" class="headerlink" title="学习囧"></a>学习囧</h2><p>最开始要写一个删除子串的算法，
+        
+          <a class="article-more-a" href="/2019/11/23/Hi%20Jiong/#more">more >></a>
+        
       
 
       
@@ -233,15 +236,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Hello-My-Blog"><a href="#Hello-My-Blog" class="headerlink" title="Hello My Blog"></a>Hello My Blog</h1><h2 id="第一-为什么要搭建博客？"><a href="#第一-为什么要搭建博客？" class="headerlink" title="第一     为什么要搭建博客？"></a>第一     为什么要搭建博客？</h2><p>在我室友搭建博客然后一点点安利的情况下，我对此早早就产生了极大的好奇，终于在今天经历了长达五六个小时的实验，终于简单的创建了自己的博客。至于搭建博客的好处，对于我来说有以下几点：</p>
-<h4 id="1-可以提高自己的叙事能力。"><a href="#1-可以提高自己的叙事能力。" class="headerlink" title="1.可以提高自己的叙事能力。"></a><strong>1.可以提高自己的叙事能力</strong>。</h4><p>​    我相信只要长期坚持下去写博客，我就再也不用担心什么社会实践总结、来自博弈论课程的一本书读后感？？甚至是写给心上人的情书（em…）。</p>
-<h4 id="2-借此提高自己的编程能力。"><a href="#2-借此提高自己的编程能力。" class="headerlink" title="2.借此提高自己的编程能力。"></a><strong>2.借此提高自己的编程能力。</strong></h4><p>​    长此以往的命令行操作让我熟能生巧，从此开始计算机之旅，当然这只是一部分，我还可以学习到他人的很多很多东西。</p>
-<h4 id="3-第三点怎么说呢，就是让人觉得很厉害。"><a href="#3-第三点怎么说呢，就是让人觉得很厉害。" class="headerlink" title="3.第三点怎么说呢，就是让人觉得很厉害。"></a><strong>3.第三点怎么说呢，就是让人觉得很厉害。</strong></h4><p>​    万一以后是个比较成功的人讲演过后，“这是我的博客shiqing233.github.io。” 想想都痛快，而且它也很可能会成为一个作为计算机专业的我以后找工作的一个亮点。</p>
-<h2 id="第二-搭建博客遇到的棘手问题"><a href="#第二-搭建博客遇到的棘手问题" class="headerlink" title="第二     搭建博客遇到的棘手问题"></a>第二     搭建博客遇到的棘手问题</h2><p>​    wa，这个我真的是心态差点崩掉，小问题我就不说了，最耽误时间的两个问题。</p>
-<p>​    一个是nmp的下载问题，经过种种实验都是下载不了，最后我采取了从头再来的方式，了解到大概是因为镜像的问题（还不太懂），我中途退出过命令行，可能中间断开了什么东西吧（还是不太懂）。</p>
-<p>​    第二个问题就是git没有设置为global的问题，导致在向github推文件的时候出了问题，通过百度终于解决了问题，然后开始写第一篇博客，打算写完马上去改改主题什么的。</p>
-<h2 id="第三-感想和收获"><a href="#第三-感想和收获" class="headerlink" title="第三     感想和收获"></a>第三     感想和收获</h2><p>​    其实我特别想搭建博客原因就是我觉得自己太菜了，怎么招要有自己的，怎么说呢，一点稍稍过人之处把，而且我好像喜欢上了一个女生，她很强，我觉得自己要更优秀更努力啦，除此之外我也是为了和我的两个室友形成某种联系（hahaha），在博客上进行心与心的碰撞（比比谁更硬）。通过这次的博客搭建，我开始有点喜欢这个命令行了，虽然它下载东西巨慢（maybe我还没有找到好的方法），我坚信自己逐渐的会找到自己的方向并且借此来督促自己学习，慢慢爱上IT，let’s do it.     End.</p>
-
+        <h1 id="Hello-My-Blog"><a href="#Hello-My-Blog" class="headerlink" title="Hello My Blog"></a>Hello My Blog</h1><h2 id="第一-为什么要搭建博客？"><a href="#第一-为什么要搭建博客？" class="headerlink" title="第一     为什么要搭建博客？"></a>第一     为什么要搭建博客？</h2><p>在我室友搭建博客然后一点点安利的情况下，
+        
+          <a class="article-more-a" href="/2019/11/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/#more">more >></a>
+        
       
 
       
@@ -439,7 +437,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">智商低，情商更低，期待爱情的不二少年.</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">智商低，情商更低，喜欢游戏，喜欢听音乐，喜欢羽毛球，期待爱情的不二少年.</div>
   	  	
     	</section>
     
