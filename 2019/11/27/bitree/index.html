@@ -6,16 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hi Jiong | Hexo</title>
+  <title>bitree | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今日囧学习囧最开始要写一个删除子串的算法，">
+  <meta name="description" content="前中序或中后序求二叉树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hi Jiong">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;23&#x2F;Hi%20Jiong&#x2F;index.html">
+<meta property="og:title" content="bitree">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;27&#x2F;bitree&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="今日囧学习囧最开始要写一个删除子串的算法，">
+<meta property="og:description" content="前中序或中后序求二叉树">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-24T03:21:20.573Z">
+<meta property="og:updated_time" content="2020-05-12T14:33:50.784Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -152,32 +152,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hi Jiong" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-bitree" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hi Jiong
+      bitree
     </h1>
   
 
         
-        <a href="/2019/11/23/Hi%20Jiong/" class="archive-article-date">
-  	<time datetime="2019-11-23T05:27:11.640Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-23</time>
+        <a href="/2019/11/27/bitree/" class="archive-article-date">
+  	<time datetime="2019-11-27T14:08:22.915Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="今日囧"><a href="#今日囧" class="headerlink" title="今日囧"></a>今日囧</h1><h2 id="学习囧"><a href="#学习囧" class="headerlink" title="学习囧"></a>学习囧</h2><p>最开始要写一个删除子串的算法， <a id="more"></a> 原以为这是一个简单的问题，看来还是眼高手低，我可能要多学习基础的东西。一开始我想要用指针的循环来解决这个问题，可是忙活了半天，最后还是失败告终。我就打算干脆用数组吧，顺便复习一下kmp算法，实践操作一下。提到kmp算法，今天真的是历史的一幕，疯狂失败之后我开始一步一步debug，然后发现一个地方-1&gt;3返回了true，然后我正准备去搜索问题于是迎来了第二大囧，好先不说这件事，问题的根本就是strlen()函数返回值是size_t类型，也就是无符号整型，由于优先级的问题又把-1转换成了无符号型，于是导致了上边说的问题，经过改正终于实现了kmp算法。下面是我的代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_next</span><span class="params">(<span class="keyword">char</span> s[],<span class="keyword">int</span> next[])</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">-1</span>;</span><br><span class="line">	next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;<span class="built_in">strlen</span>(s)<span class="number">-1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||s[i]==s[j])&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">			<span class="keyword">if</span>(s[i]!=s[j]) next[i]=j;</span><br><span class="line">			<span class="keyword">else</span> next[i]=next[j];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> j=next[j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> s[<span class="number">256</span>];</span><br><span class="line">	<span class="keyword">char</span> t[<span class="number">256</span>];</span><br><span class="line">	<span class="keyword">int</span> next[<span class="number">256</span>];</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">	get_next(s,next);</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>((i&lt;(<span class="keyword">int</span>)<span class="built_in">strlen</span>(s))&amp;&amp;(j&lt;(<span class="keyword">int</span>)<span class="built_in">strlen</span>(t)))&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||s[i]==t[j])&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> j=next[j];</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">if</span>(j&gt;=<span class="built_in">strlen</span>(t)) <span class="built_in">cout</span>&lt;&lt;i-<span class="built_in">strlen</span>(t)+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="前中序或中后序求二叉树"><a href="#前中序或中后序求二叉树" class="headerlink" title="前中序或中后序求二叉树"></a>前中序或中后序求二叉树</h2><a id="more"></a>在此拿前中序举例，前序由根+左子树+右子树的形式构成，中序由左子树+根+右子树构成 。在中序找到从前序得知的根节点位置，根据中序分成左右子树，用递归的方法求得二叉树。代码如下：
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> TElemType;</span><br><span class="line"><span class="comment">//二叉树结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">	TElemType data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="生活囧"><a href="#生活囧" class="headerlink" title="生活囧"></a>生活囧</h2><p>最近诸事不顺，从大创莫名其妙被淘汰，到逃课被抓，再到在机房用校园网导致欠费(严重怀疑我一个人支撑全教室的网络)，再到昨晚给她评论她删了说说，感觉我被制裁了，无论那一方面都是打击我的自信，不过还好，我这次不知为何心态很好，要是前些日子我可能就又开启自闭模式了。少年，少玩些游戏吧，相信自己，好好努力，你还是可以的。(又一波鸡汤)   Time.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CrtBT</span><span class="params">(BiTree &amp;T,<span class="keyword">char</span> pre[],<span class="keyword">char</span> ino[],<span class="keyword">int</span> ps,<span class="keyword">int</span> is,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 已知pre[ps..ps+n-1]为二叉树的先序序列， </span></span><br><span class="line">    <span class="comment">// ino[is..is+n-1]为二叉树的中序序列</span></span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>) T=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">	    k=Search(ino, pre[ps]); <span class="comment">// 在中序序列查找根节点位置 </span></span><br><span class="line">	    <span class="keyword">if</span> (k==<span class="number">-1</span>)  T=<span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;   </span><br><span class="line">		    T = <span class="keyword">new</span> BiTNode; </span><br><span class="line">			T-&gt;data = pre[ps];</span><br><span class="line">			<span class="keyword">if</span> (k==is)  T-&gt;Lchild = <span class="literal">NULL</span>;</span><br><span class="line">			<span class="keyword">else</span>  CrtBT(T-&gt;Lchild, pre[], ino[],ps+<span class="number">1</span>, is, k-is);</span><br><span class="line">			<span class="keyword">if</span> (k==is+n<span class="number">-1</span>) T-&gt;Rchild = <span class="literal">NULL</span>;</span><br><span class="line">			<span class="keyword">else</span>  CrtBT(T-&gt;Rchild, pre[], ino[],ps+<span class="number">1</span>+(k-is),k+<span class="number">1</span>,n-(k-is)<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="线索二叉树的实现和遍历"><a href="#线索二叉树的实现和遍历" class="headerlink" title="线索二叉树的实现和遍历"></a>线索二叉树的实现和遍历</h2><p>这个算法我觉得表面还是比较好理解的，如果想搞清楚每一层递归和外边层的关系就有点混乱，比如这个pre，外边层的pre变量是前一次执行完一次递归后的那个pre，而且pre如果是NULL时不能进入判断会访问非法，要加一个pre是否为空的判断.还有一个大，最开始创建树的时候没有对两个标志变量赋初值。导致出现死循环和输出少的情况，最后实现了这个算法，下面是代码:(输入前序输出中序)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> TElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;Link,Thread&#125; PointerTag;<span class="comment">//Link:表示指向孩子指针,Thread:表示指向线索指针</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiThrNode</span>&#123;</span>	<span class="comment">//线索二叉树节点 </span></span><br><span class="line">	TElemType data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BiThrNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span></span><br><span class="line">	PointerTag LTag;</span><br><span class="line">	PointerTag RTag;</span><br><span class="line">&#125;BiThrNode,*BiThrTree;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiThrTree *T)</span></span>&#123;</span><br><span class="line">	TElemType ch;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;ch;</span><br><span class="line">	<span class="keyword">if</span>(ch==<span class="string">'#'</span>) *T=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		*T=<span class="keyword">new</span> BiThrNode;</span><br><span class="line">		(*T)-&gt;data=ch;</span><br><span class="line">		(*T)-&gt;LTag=Link;</span><br><span class="line">		(*T)-&gt;RTag=Link;</span><br><span class="line">		CreateBiTree(&amp;((*T)-&gt;lchild));</span><br><span class="line">		CreateBiTree(&amp;((*T)-&gt;rchild));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BiThrTree pre=<span class="literal">NULL</span>; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InThreading</span><span class="params">(BiThrTree T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(T)&#123;</span><br><span class="line">		InThreading(T-&gt;lchild);</span><br><span class="line">		<span class="keyword">if</span>(!T-&gt;lchild)&#123;</span><br><span class="line">			T-&gt;LTag=Thread;</span><br><span class="line">			T-&gt;lchild=pre;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(pre&amp;&amp;!pre-&gt;rchild)&#123;</span><br><span class="line">			pre-&gt;RTag=Thread;</span><br><span class="line">			pre-&gt;rchild=T;</span><br><span class="line">		&#125;</span><br><span class="line">		pre=T;</span><br><span class="line">		InThreading(T-&gt;rchild);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraverse_Thr</span><span class="params">(BiThrTree tep)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(tep)&#123;</span><br><span class="line">		<span class="keyword">while</span>(tep-&gt;LTag == Link) tep = tep-&gt;lchild;<span class="comment">//找到中序第一个节点 </span></span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;tep-&gt;data&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">while</span>(tep-&gt;RTag == Thread &amp;&amp; tep-&gt;rchild != <span class="literal">NULL</span>)&#123;</span><br><span class="line">			tep = tep-&gt;rchild;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;tep-&gt;data&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		tep = tep-&gt;rchild;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	BiThrTree con=<span class="keyword">new</span> BiThrNode;</span><br><span class="line">	CreateBiTree(&amp;con);</span><br><span class="line">	InThreading(con);</span><br><span class="line">	InOrderTraverse_Thr(con);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -236,7 +242,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/23/Hi%20Jiong/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/27/bitree/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -251,8 +257,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2019/11/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇博客文章</div>
+    <a href="/2019/11/23/kmp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">kmp</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -279,7 +285,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#今日囧"><span class="toc-number">1.</span> <span class="toc-text">今日囧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#学习囧"><span class="toc-number">1.1.</span> <span class="toc-text">学习囧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生活囧"><span class="toc-number">1.2.</span> <span class="toc-text">生活囧</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前中序或中后序求二叉树"><span class="toc-number">1.</span> <span class="toc-text">前中序或中后序求二叉树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线索二叉树的实现和遍历"><span class="toc-number">2.</span> <span class="toc-text">线索二叉树的实现和遍历</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -308,7 +314,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 时 倾
+    		&copy; 2020 时 倾
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
