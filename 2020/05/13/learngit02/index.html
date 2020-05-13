@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="learn git notes from xiaobaithe second day">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔记">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;05&#x2F;13&#x2F;learngit02&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="learn git notes from xiaobaithe second day">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="c:&#x2F;Users&#x2F;Dell&#x2F;Pictures&#x2F;Saved%20Pictures&#x2F;mmexport1588051238610.jpg">
+<meta property="og:updated_time" content="2020-05-13T09:33:33.741Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:&#x2F;Users&#x2F;Dell&#x2F;Pictures&#x2F;Saved%20Pictures&#x2F;mmexport1588051238610.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -149,16 +154,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-learngit02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-learngit02" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/13/learngit02/">笔记</a>
+    <h1 class="article-title" itemprop="name">
+      笔记
     </h1>
   
 
@@ -171,10 +174,77 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="learn-git-notes-from-xiaobai"><a href="#learn-git-notes-from-xiaobai" class="headerlink" title="learn git notes from xiaobai"></a>learn git notes from xiaobai</h1><h3 id="the-second-day"><a href="#the-second-day" class="headerlink" title="the second day"></a>the second day
-        
-          <a class="article-more-a" href="/2020/05/13/learngit02/#more">more >></a>
-        
+        <h1 id="learn-git-notes-from-xiaobai"><a href="#learn-git-notes-from-xiaobai" class="headerlink" title="learn git notes from xiaobai"></a>learn git notes from xiaobai</h1><h3 id="the-second-day"><a href="#the-second-day" class="headerlink" title="the second day"></a>the second day<a id="more"></a></h3><p>工作区和暂存区：</p>
+<p>1.工作区：你所创建的文件夹。比如：learngit</p>
+<p>2.版本库：工作区有个隐藏目录.git就是版本库，可以通过ls -a查看隐藏目录。</p>
+<p>版本库中最重要的就是暂存区，还有git自动创建的第一个分支master，以及指向master的一个指针head。</p>
+<p><code>git add</code> 实际上就是将文件添加到暂存区，<code>git commit</code> 实际上就是将暂存区内容提交到当前分支。</p>
+<p>比较：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>touch 文件名</td>
+<td>新建一个文件</td>
+</tr>
+<tr>
+<td>rm 文件名</td>
+<td>删除一个文件</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>查看工作区状态，例如修改新增等（commit前查看）</td>
+</tr>
+<tr>
+<td>git diff （文件名）</td>
+<td>比较工作区和暂存区（某个文件）</td>
+</tr>
+<tr>
+<td>git diff HEAD（文件名）</td>
+<td>比较工作区和最新版本库（某个文件）</td>
+</tr>
+<tr>
+<td>git diff cached（文件名）</td>
+<td>比较暂存区和最新版本库（某个文件）</td>
+</tr>
+</tbody></table>
+<p>接下来这一part是我个人觉得有点绕的地方，需要多实际操作理解一下。</p>
+<p>撤销修改：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git checkout – readme.txt</td>
+<td>撤销readme.txt回到暂存区的版本</td>
+<td>若文件没有提交到暂存区则回退到版本库，且 -&zwnj;- 不能省略</td>
+</tr>
+<tr>
+<td>git reset head 文件名</td>
+<td>撤销暂存区，重新放回工作区</td>
+<td>个人理解就是文件撤销修改，然后清除暂存区，工作区不会改变</td>
+</tr>
+<tr>
+<td>git rm 文件名</td>
+<td></td>
+<td>删除后再commit就会在版本库中删除，使用版本回退和checkout命令可以恢复到工作区</td>
+</tr>
+</tbody></table>
+<p>注：<code>git rm</code>是删除的工作区和暂存区的文件，而rm删除的是工作区的，所以前者需要reset才能找回文件，后者可以直接checkout。</p>
+<p>总结一下：只要你提交到版本库，就一定可以找回来，不过可能是你没有修改过的。工作区，暂存区，版本库都可以通过命令达到你想要的版本。</p>
+<hr>
+<p>学习到这个地方感觉有点好玩，突然思考如何才能让曾经提交到版本库的文件永远的不被人看到。今天就到这里了，每天学一些git，然后尝试markdown中一个好玩的，今天分享一下我女朋友。</p>
+<img src="C:\Users\Dell\Pictures\Saved Pictures\mmexport1588051238610.jpg" alt="mmexport1588051238610"  />
+
+
       
 
       
@@ -185,16 +255,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/13/learngit02/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/13/learngit02/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/12/learngit01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -209,208 +338,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-learngit01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/learngit01/">笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/12/learngit01/" class="archive-article-date">
-  	<time datetime="2020-05-12T15:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="learn-git-notes-from-xiaobai"><a href="#learn-git-notes-from-xiaobai" class="headerlink" title="learn git notes from xiaobai"></a>learn git notes from xiaobai</h1><h3 id="the-first-day"><a href="#the-first-day" class="headerlink" title="the first day"></a>the first day
-        
-          <a class="article-more-a" href="/2020/05/12/learngit01/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/12/learngit01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#learn-git-notes-from-xiaobai"><span class="toc-number">1.</span> <span class="toc-text">learn git notes from xiaobai</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-second-day"><span class="toc-number">1.0.1.</span> <span class="toc-text">the second day</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-bitree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/27/bitree/">bitree</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/27/bitree/" class="archive-article-date">
-  	<time datetime="2019-11-27T14:08:22.915Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前中序或中后序求二叉树"><a href="#前中序或中后序求二叉树" class="headerlink" title="前中序或中后序求二叉树"></a>前中序或中后序求二叉树</h2>
-        
-          <a class="article-more-a" href="/2019/11/27/bitree/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/27/bitree/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kmp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/23/kmp/">kmp</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/23/kmp/" class="archive-article-date">
-  	<time datetime="2019-11-23T05:27:11.640Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="kmp算法"><a href="#kmp算法" class="headerlink" title="kmp算法"></a>kmp算法</h2>
-        
-          <a class="article-more-a" href="/2019/11/23/kmp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/23/kmp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -433,8 +386,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
