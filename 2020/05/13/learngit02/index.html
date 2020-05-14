@@ -16,7 +16,7 @@
 <meta property="og:description" content="Learn git notes from xiaobaithe second day工作区和暂存区： 1.工作区：你所创建的文件夹。比如：learngit 2.版本库：工作区有个隐藏目录.git就是版本库，可以通过ls -a查看隐藏目录。 版本库中最重要的就是暂存区，还有git自动创建的第一个分支master，以及指向master的一个指针head。 git add 实际上就是将文件添加到暂存区，">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;shiqing233.github.io&#x2F;img&#x2F;cg.jpg">
-<meta property="og:updated_time" content="2020-05-13T14:42:52.690Z">
+<meta property="og:updated_time" content="2020-05-14T11:25:53.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;shiqing233.github.io&#x2F;img&#x2F;cg.jpg">
   
@@ -154,12 +154,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Learn-git-notes-from-xiaobai"><a href="#Learn-git-notes-from-xiaobai" class="headerlink" title="Learn git notes from xiaobai"></a>Learn git notes from xiaobai</h3><h6 id="the-second-day"><a href="#the-second-day" class="headerlink" title="the second day"></a>the second day</h6><p>工作区和暂存区：</p>
+        <h3 id="Learn-git-notes-from-xiaobai"><a href="#Learn-git-notes-from-xiaobai" class="headerlink" title="Learn git notes from xiaobai"></a><strong>Learn git notes from xiaobai</strong></h3><h6 id="the-second-day"><a href="#the-second-day" class="headerlink" title="the second day"></a>the second day</h6><p><strong>工作区和暂存区：</strong></p>
 <p>1.工作区：你所创建的文件夹。比如：learngit</p>
-<p>2.版本库：工作区有个隐藏目录.git就是版本库，可以通过ls -a查看隐藏目录。</p>
+<p>2.版本库：工作区有个隐藏目录.git就是版本库，可以通过<code>ls -a</code>查看隐藏目录。</p>
 <p>版本库中最重要的就是暂存区，还有git自动创建的第一个分支master，以及指向master的一个指针head。</p>
 <p><code>git add</code> 实际上就是将文件添加到暂存区，<code>git commit</code> 实际上就是将暂存区内容提交到当前分支。</p>
-<p>比较：<a id="more"></a></p>
+<p><strong>比较：</strong><a id="more"></a></p>
 <table>
 <thead>
 <tr>
@@ -188,12 +188,12 @@
 <td>比较工作区和最新版本库（某个文件）</td>
 </tr>
 <tr>
-<td>git diff cached（文件名）</td>
+<td>git diff -&zwnj;-cached（文件名）</td>
 <td>比较暂存区和最新版本库（某个文件）</td>
 </tr>
 </tbody></table>
 <p>接下来这一part是我个人觉得有点绕的地方，需要多实际操作理解一下。</p>
-<p>撤销修改：</p>
+<p><strong>撤销修改：</strong></p>
 <table>
 <thead>
 <tr>
@@ -204,12 +204,12 @@
 </thead>
 <tbody><tr>
 <td>git checkout -&zwnj;- readme.txt</td>
-<td>撤销readme.txt回到暂存区的版本</td>
+<td>使工作区撤销readme.txt修改，回到暂存区的版本</td>
 <td>若文件没有提交到暂存区则回退到版本库，且 -&zwnj;- 不能省略</td>
 </tr>
 <tr>
 <td>git reset head 文件名</td>
-<td>撤销暂存区，重新放回工作区</td>
+<td>撤销暂存区修改，重新放回工作区</td>
 <td>个人理解就是文件撤销修改，然后清除暂存区，工作区不会改变</td>
 </tr>
 <tr>
@@ -219,9 +219,10 @@
 </tr>
 </tbody></table>
 <p>注：<code>git rm</code>是删除的工作区和暂存区的文件，而rm删除的是工作区的，所以前者需要reset才能找回文件，后者可以直接checkout。</p>
-<p>总结一下：只要你提交到版本库，就一定可以找回来，不过可能是你没有修改过的。工作区，暂存区，版本库都可以通过命令达到你想要的版本。</p>
+<p><strong>总结一下：</strong>只要你提交到版本库，就一定可以找回来，不过可能是你没有修改过的。工作区，暂存区，版本库都可以通过命令达到你想要的版本。</p>
 <hr>
-<p>学习到这个地方感觉有点好玩，突然思考如何才能让曾经提交到版本库的文件永远的不被人看到。今天就到这里了，每天学一些git，然后尝试markdown中一个功能，今天分享一下我女朋友。<img src="https://shiqing233.github.io/img/cg.jpg" alt="cg"></p>
+<p>学习到这个地方感觉有点好玩，突然思考如何才能让曾经提交到版本库的文件永远的不被人看到。</p>
+<p>今天就到这里了，每天学一些git，然后尝试markdown中一个功能，今天分享一下我女朋友。<img src="https://shiqing233.github.io/img/cg.jpg" alt="cg" style="zoom: 50%;" /></p>
 
       
 
@@ -293,6 +294,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/05/14/learngit03/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          GitNotes
+        
+      </div>
+    </a>
   
   
     <a href="/2020/05/12/learngit01/" id="article-nav-older" class="article-nav-link-wrap">
