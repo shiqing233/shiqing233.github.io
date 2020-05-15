@@ -131,6 +131,116 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-learngit04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/15/learngit04/">GitNotes</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/15/learngit04/" class="archive-article-date">
+  	<time datetime="2020-05-15T04:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Learn-git-notes-from-xiaobai"><a href="#Learn-git-notes-from-xiaobai" class="headerlink" title="Learn git notes from xiaobai"></a>Learn git notes from xiaobai</h3><h6 id="the-fourth-day"><a href="#the-fourth-day" class="headerlink" title="the fourth day"></a>the fourth day</h6><p><strong>解决冲突：</strong></p>
+<p>产生背景：新建一个分支修改后提交后回到原分支又进行修改提交，再进行合并时会产生冲突。</p>
+<p>通过<code>git status</code>可以查看产生冲突的文件。然后查看文件，git会用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>,<code>=======</code>,<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>，来显示不同分支分内容。然后通过修改解决冲突再提交。这里可以通过<code>git log</code>查看分支合并情况。</p>
+<p><code>git log --graph --pretty=oneline --abbrev-commit</code>：通过图表查看分支合并情况。</p>
+<p><code>--pretty=oneline</code>：一行显示，之前我说不喜欢一行显示，不过这里看图表时用一行可以看得很清楚。</p>
+<p><code>--abbrev-commit</code>：我没有仔细看这个参数，不过测试知道这是让版本号显示的更简洁。</p>
+<p><strong>分支管理：</strong></p>
+<p>合并的另外一种方式：<code>git merge --no-ff -m &quot;message&quot; branch_name</code> :合并后master指向下一版本，head指向master，并且可以查看到合并过，而快速合并就看不到，相同的是如果有冲突的话还是不能合并的。</p>
+<p>实际开发中管理分支原则：master是稳定的，只用来发布新版本，dev是不稳定的，每个人都在上面干活，直到新版本写好后再合并到master。</p>
+<p>写到这我对于昨天的第二个问题可能有点想法，就是开发中可能是通过人为的要求来避免每个人互相产生冲突，而且每个人实现的功能不一样，所修改的文件也是不一样的，然后会有一些文件提前写好供每个人使用，所以修改文件不同，上传时也就不会有冲突。</p>
+<p><strong>Bug分支：</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git stash</td>
+<td>保存当前修改的内容；类似于压栈</td>
+</tr>
+<tr>
+<td>git stash list</td>
+<td>查看保存的版本；姑且说是版本，其实就是不同的修改</td>
+</tr>
+<tr>
+<td>git stash apply</td>
+<td>回复现场</td>
+</tr>
+<tr>
+<td>git stash drop</td>
+<td>删除栈顶中的版本</td>
+</tr>
+<tr>
+<td>git stash pop</td>
+<td>相当于前两个命令的合并</td>
+</tr>
+<tr>
+<td>git cherry-pick 某次提交的哈希值</td>
+<td>复制特定的提交到当前分支</td>
+</tr>
+</tbody></table>
+<p>注：</p>
+<p>1.<code>git stash ***</code> 的命令后边都可以通过加 stash@{数字}来对特定的某个版本操作。</p>
+<p>2.<code>git stash</code>前一定要查看status确保所有文件都已经add过，因为它不能将未被跟踪的（也就是从未add过的）文件压栈。</p>
+<p>3.个人看了一些相关讨论后，觉得这一部分的应用场景大概就是这样：加入当你正在实现dev分支的功能时，突然需要你修改一个主分支的bug，而你由于没有完全实现不能提交当前分支，如果直接回到主分支会把新增加的内容带过去，所以你需要将dev分支状态压栈，修改完主分支的bug后回到dev，将之前的状态出栈，继续完成未完成的工作，而主分支的bug，dev分支也会出现，所以需要出栈前用<code>git cherry-pick</code>命令将修改bug的那次提交复制到dev分支，在出栈继续完成工作。如果dev修改了master分支中的部分，那么出栈时会出现冲突的情况。</p>
+<p><strong>分支强制删除：</strong></p>
+<p>使用背景：当你被迫需要删除某个已经完成功能的分支时。</p>
+<p><code>git branch -d 分支名</code> 此时是会报错，需要把参数改成-D可以强制删除掉。</p>
+<hr>
+<p>今天解决了一个昨天的问题，明天继续！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-learngit03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -155,7 +265,7 @@
 <p>我刚开始我学习了一点之后就产生了两个疑问，带着两个问题学习。</p>
 <p>​    问题1：为什么实际情况需要找一台电脑充当服务器24小时开机？主要是不理解为什么要开机？</p>
 <p>​    问题2：为什么所有人往一个服务器提交版本库不会互相影响？</p>
-<p>然后到此处需要在github上进行一些操作，发现github加载很慢，在网上找到相关处理方法，至于原理是什么，并不是我现在想了解的重点，好用就完了。<a href="https://mp.weixin.qq.com/s?src=11&timestamp=1589455860&ver=2338&signature=ijz8mkcFx7uoNbBPMXY24W3ftHmJYO6ltPmaTrIRTIpCbKL1Cwc*54Kde*G5HjkH3hkUDKc*AjtOFiKJiIVE4EE1oa9xDourfw1RN-FpmLBlXck2d408CDBHv7IsHDaX&new=1" target="_blank" rel="noopener">处理github加载缓慢问题</a></p>
+<p>然后到此处需要在github上进行一些操作，发现github加载很慢，在网上找到相关处理方法，至于原理是什么，并不是我现在想了解的重点，好用就完了。</p>
 <p>有一些命令行命令可能是平时会用的，我个人觉得第一次用到就查一下了解记录下来就好了，不用刻意去专门学习，逐渐熟悉。</p>
 <table>
 <thead>
