@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="时 倾">
 <meta property="og:description" content="Learn git notes from xiaobaithe fourth day解决冲突： 产生背景：新建一个分支修改后提交后回到原分支又进行修改提交，再进行合并时会产生冲突。 通过git status可以查看产生冲突的文件。然后查看文件，git会用&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;,=======,&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;，来显示不同分支">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-15T13:59:19.478Z">
+<meta property="og:updated_time" content="2020-05-15T14:07:28.943Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="时 倾" type="application/atom+xml">
@@ -158,7 +158,7 @@
 <p><code>git log --graph --pretty=oneline --abbrev-commit</code>：通过图表查看分支合并情况。</p>
 <p><code>--pretty=oneline</code>：一行显示，之前我说不喜欢一行显示，不过这里看图表时用一行可以看得很清楚。</p>
 <p><code>--abbrev-commit</code>：我没有仔细看这个参数，不过测试知道这是让版本号显示的更简洁。</p>
-<p><strong>分支管理：</strong></p>
+<p><strong>分支管理：</strong><a id="more"></a></p>
 <p>合并的另外一种方式：<code>git merge --no-ff -m &quot;message&quot; branch_name</code> :合并后master指向下一版本，head指向master，并且可以查看到合并过，而快速合并就看不到，相同的是如果有冲突的话还是不能合并的。</p>
 <p>实际开发中管理分支原则：master是稳定的，只用来发布新版本，dev是不稳定的，每个人都在上面干活，直到新版本写好后再合并到master。</p>
 <p>写到这我对于昨天的第二个问题可能有点想法，就是开发中可能是通过人为的要求来避免每个人互相产生冲突，而且每个人实现的功能不一样，所修改的文件也是不一样的，然后会有一些文件提前写好供每个人使用，所以修改文件不同，上传时也就不会有冲突。</p>
@@ -275,6 +275,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/05/16/learngit05/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          GitNotes
+        
+      </div>
+    </a>
   
   
     <a href="/2020/05/14/learngit03/" id="article-nav-older" class="article-nav-link-wrap">

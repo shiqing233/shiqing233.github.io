@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>GitNotes | 时 倾</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Learn git notes from xiaobaithe third day远程仓库： 我刚开始我学习了一点之后就产生了两个疑问，带着两个问题学习。 ​    问题1：为什么实际情况需要找一台电脑充当服务器24小时开机？主要是不理解为什么要开机？ ​    问题2：为什么所有人往一个服务器提交版本库不会互相影响？ 然后到此处需要在github上进行一些操作，发现github加载很慢，在网上找">
+  <meta name="description" content="Learn git notes from xiaobaithe fifth day多人协作： 首先解决一下上上次笔记中的问题，对于为什么要有一个服务器24小时开机的问题，下面是我室友的回答，怎么说呢，可以说是准准确确明明白白的解答了我的困惑点。 服务器其实就是一个运行了“服务器程序”的设备，这个“服务器程序”当前有很多，但其实就是从网络端口获取输入，处理输入后把它再输出到端口的一个程序；所以其实你">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GitNotes">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;05&#x2F;14&#x2F;learngit03&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;05&#x2F;16&#x2F;learngit05&#x2F;index.html">
 <meta property="og:site_name" content="时 倾">
-<meta property="og:description" content="Learn git notes from xiaobaithe third day远程仓库： 我刚开始我学习了一点之后就产生了两个疑问，带着两个问题学习。 ​    问题1：为什么实际情况需要找一台电脑充当服务器24小时开机？主要是不理解为什么要开机？ ​    问题2：为什么所有人往一个服务器提交版本库不会互相影响？ 然后到此处需要在github上进行一些操作，发现github加载很慢，在网上找">
+<meta property="og:description" content="Learn git notes from xiaobaithe fifth day多人协作： 首先解决一下上上次笔记中的问题，对于为什么要有一个服务器24小时开机的问题，下面是我室友的回答，怎么说呢，可以说是准准确确明明白白的解答了我的困惑点。 服务器其实就是一个运行了“服务器程序”的设备，这个“服务器程序”当前有很多，但其实就是从网络端口获取输入，处理输入后把它再输出到端口的一个程序；所以其实你">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-16T15:28:09.374Z">
+<meta property="og:updated_time" content="2020-05-17T07:52:13.320Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="时 倾" type="application/atom+xml">
@@ -132,7 +132,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-learngit03" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-learngit05" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -144,96 +144,44 @@
   
 
         
-        <a href="/2020/05/14/learngit03/" class="archive-article-date">
-  	<time datetime="2020-05-14T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
+        <a href="/2020/05/16/learngit05/" class="archive-article-date">
+  	<time datetime="2020-05-16T05:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Learn-git-notes-from-xiaobai"><a href="#Learn-git-notes-from-xiaobai" class="headerlink" title="Learn git notes from xiaobai"></a>Learn git notes from xiaobai</h3><h6 id="the-third-day"><a href="#the-third-day" class="headerlink" title="the third day"></a>the third day</h6><p><strong>远程仓库：</strong></p>
-<p>我刚开始我学习了一点之后就产生了两个疑问，带着两个问题学习。</p>
-<p>​    问题1：为什么实际情况需要找一台电脑充当服务器24小时开机？主要是不理解为什么要开机？</p>
-<p>​    问题2：为什么所有人往一个服务器提交版本库不会互相影响？</p>
-<p>然后到此处需要在github上进行一些操作，发现github加载很慢，在网上找到相关处理方法，至于原理是什么，并不是我现在想了解的重点，好用就完了。</p>
-<p>有一些命令行命令可能是平时会用的，我个人觉得第一次用到就查一下了解记录下来就好了，不用刻意去专门学习，逐渐熟悉。</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>cd ~</td>
-<td>进入主目录</td>
-</tr>
-<tr>
-<td>pwd</td>
-<td>查看当前路径</td>
-</tr>
-</tbody></table>
-<p><strong>添加远程库：</strong><a id="more"></a></p>
-<p>首先在github上创建一个新库，然后通过git bash在本地仓库下依次运行下面命令。</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>git remote add origin @github.com:用户名/本地仓库文件夹.git</td>
-<td>关联一个远程库</td>
-</tr>
-<tr>
-<td>git push -u origin master</td>
-<td>第一次提交master分支中全部内容，再次提交不需要-u</td>
-</tr>
-</tbody></table>
-<p>注：origin是本地版本库名字，可以自己取，方便操作。</p>
-<p>首次使用这两个命令时需要验证KEY，输入yes就可以了<strong>。</strong></p>
-<p><strong>克隆远程仓库：</strong></p>
-<p><code>git clone git@github.com:用户名/库名.git</code>：从远程仓库克隆到本地仓库</p>
-<p>个人理解clone后边是仓库的地址，也可以使用这样的形式：<code>git clone git://github.com/用户名/库名.git</code></p>
-<p><strong>创建与合并分支：</strong></p>
-<p>git新建分支合并分支很快，因为只是指针的修改。master指向当前分支，head指向master，新增分支后例如test，test指向新分支，head指向test。</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>git branch</td>
-<td>查看全部分支，当前分支前有*提示</td>
-</tr>
-<tr>
-<td>git branch 分支名</td>
-<td>新建分支</td>
-</tr>
-<tr>
-<td>git switch/checkout 分支名</td>
-<td>切换分支</td>
-</tr>
-<tr>
-<td>git switch -c / checkout -b 分支名</td>
-<td>新建并切换分支</td>
-</tr>
-<tr>
-<td>git merge 分支名</td>
-<td>合并分支到当前分支</td>
-</tr>
-<tr>
-<td>git branch -d 分支名</td>
-<td>删除分支</td>
-</tr>
-</tbody></table>
-<p>注：个人此处更喜欢用switch因为 git checkout -&zwnj;-文件名 是撤销操作可能会很乱。</p>
-<p>然后此处我在操作的时候遇到一个问题就是我新建分支并在新分支中添加内容后不提交再回到原来的分支时，会将新分支的内容带到原分支，然后在原分支进行add、commit。查阅了资料之后，我认为我室友的解释最容易理解：就是说切换到新分支后，进行修改的过程中如果不修改和原来分支相同的地方，只是新增，是可以继续切换回原来分支的；如果修改了相同的部分，那么切换分支就会出错，是因为和原分支产生冲突，它并不知道修改后是什么样子。</p>
-<p>写到这我想起了昨天看到说git是管理修改不是管理文件，我可能有点理解这句话了。还有两个问题还没有解决，带着问题继续学习，今天就到这。</p>
+        <h3 id="Learn-git-notes-from-xiaobai"><a href="#Learn-git-notes-from-xiaobai" class="headerlink" title="Learn git notes from xiaobai"></a>Learn git notes from xiaobai</h3><h6 id="the-fifth-day"><a href="#the-fifth-day" class="headerlink" title="the fifth day"></a>the fifth day</h6><p><strong>多人协作：</strong></p>
+<p>首先解决一下上上次笔记中的问题，对于为什么要有一个服务器24小时开机的问题，下面是我室友的回答，怎么说呢，可以说是准准确确明明白白的解答了我的困惑点。</p>
+<p>服务器其实就是一个运行了“服务器程序”的设备，这个“服务器程序”当前有很多，但其实就是从网络端口获取输入，处理输入后把它再输出到端口的一个程序；所以其实你自己写一个处理输入和输出的程序，把它的输入和输出重定向到网络端口也能当服务器用，那如果运行着这个程序的设备关机了，谁来处理这些从端口过来的输入呢。</p>
+<p>好，室友的回答以疑问句结束，但是我的问题画上了圆满的句号。</p>
+<p>**推送分支：<a id="more"></a></p>
+<p><code>git remote -v</code>：查看版本库信息</p>
+<p><code>git push 远程库名 分支名</code>：推送分支到远程库</p>
+<p><strong>抓取分支：</strong></p>
+<p><code>git pull</code>：抓取远程分支到本地</p>
+<p>注：1.pull之前需要本地和远程分支建立连接：<code>git branch --set-upstream-to=origin/dev dev</code> </p>
+<p>2.pull之前当前分支需要提交。</p>
+<p>3.pull之后会产生冲突需要修改后提交。</p>
+<p>4.以上都是因为pull在抓取到远程分支后会自动合并，而此时可能你的同伴已经推送过他的修改，所以会产生冲突而导致的问题。</p>
+<p><strong>简单总结一下多人协作的流程：</strong></p>
+<p>1.首先，push自己的修改。</p>
+<p>2.如果推送失败，是因为远程分支比你本地的新，需要pull。</p>
+<p>3.如果提示no tracking information，则需要通过命令将本地分支和远程分支连接。</p>
+<p>4.如果pull冲突，解决冲突提交。</p>
+<p><strong>Rebase（变基）：</strong></p>
+<p>一种合并代码的方式：和merge相比较</p>
+<p>我们假设这样一种情况：</p>
+<p>master分支结点：<code>c1&lt;--c3&lt;--c4</code> </p>
+<p>dev分支节点：<code>c1&lt;--c2&lt;--c5</code></p>
+<p>如果采用merge方法合并得到的提交历史：</p>
+<p><code>c1&lt;--c2&lt;--c3&lt;--c4&lt;--c5&lt;--c6</code>（因为产生冲突，手动处理后再次提交增加结点6）因为merge是参照时间先后顺序的。</p>
+<p>而采用<code>git rebase master</code>方法产生的提交历史为：</p>
+<p><code>c1&lt;--c3&lt;--c4&lt;--c2&lt;--c5</code>因为合并之前解决冲突后add到暂存区就可以，然后执行<code>git rebase --continue</code>继续合并。</p>
+<p>最后，rebase命令相比merge就是起到了改变分支为直线，方便其他人查看提交历史，但是如果互相没有商量好，随意使用merge和rebase可能反而起反作用。</p>
+<hr>
+<p>好了今天就到这。</p>
 
       
 
@@ -292,7 +240,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/14/learngit03/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/16/learngit05/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,7 +254,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/15/learngit04/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/17/learngit06/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -316,7 +264,7 @@
     </a>
   
   
-    <a href="/2020/05/13/learngit02/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/05/15/learngit04/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">GitNotes</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -344,7 +292,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Learn-git-notes-from-xiaobai"><span class="toc-number">1.</span> <span class="toc-text">Learn git notes from xiaobai</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#the-third-day"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">the third day</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Learn-git-notes-from-xiaobai"><span class="toc-number">1.</span> <span class="toc-text">Learn git notes from xiaobai</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#the-fifth-day"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">the fifth day</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
